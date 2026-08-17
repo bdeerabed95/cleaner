@@ -1,1 +1,520 @@
-... محتوى الملف ...
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الفضاء والفلك - رحلة عبر الكون اللامحدود</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #0a0e27;
+            --bg-card: #1a1f3a;
+            --bg-card-hover: #2d3561;
+            --accent-color: #00d4ff;
+            --accent-orange: #ff6b35;
+            --accent-purple: #9d4edd;
+            --accent-pink: #ff006e;
+            --text-primary: #f0f0f0;
+            --text-secondary: #a0a0a0;
+            --border-color: #2d3561;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Cairo', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 50%, #0f1828 100%);
+            background-attachment: fixed;
+            color: var(--text-primary);
+            line-height: 1.8;
+            padding: 2rem 1rem;
+            min-height: 100vh;
+        }
+
+        /* نجوم متحركة في الخلفية */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(2px 2px at 20px 30px, #eee, rgba(0,0,0,0)),
+                radial-gradient(2px 2px at 60px 70px, #fff, rgba(0,0,0,0)),
+                radial-gradient(1px 1px at 50px 50px, #ddd, rgba(0,0,0,0)),
+                radial-gradient(1px 1px at 130px 80px, #fff, rgba(0,0,0,0)),
+                radial-gradient(2px 2px at 90px 10px, #eee, rgba(0,0,0,0));
+            background-repeat: repeat;
+            background-size: 200px 200px;
+            pointer-events: none;
+            z-index: -1;
+            opacity: 0.5;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 3rem;
+            border-bottom: 2px solid var(--accent-color);
+            padding-bottom: 2rem;
+            animation: fadeInDown 0.8s ease;
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        header h1 {
+            font-size: 3rem;
+            background: linear-gradient(135deg, var(--accent-color), var(--accent-purple), var(--accent-pink));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.5rem;
+            font-weight: 800;
+            text-shadow: 0 0 30px rgba(0, 212, 255, 0.3);
+        }
+
+        header p {
+            color: var(--text-secondary);
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .badge {
+            display: inline-block;
+            background: rgba(0, 212, 255, 0.1);
+            color: var(--accent-color);
+            padding: 0.5rem 1.2rem;
+            border-radius: 25px;
+            border: 1px solid var(--accent-color);
+            margin: 0.5rem;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .badge:hover {
+            background: rgba(0, 212, 255, 0.2);
+            transform: scale(1.05);
+        }
+
+        .section-title {
+            font-size: 2rem;
+            color: var(--text-primary);
+            margin: 3rem 0 1.5rem 0;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            border-right: 5px solid var(--accent-color);
+            padding-right: 1rem;
+            animation: fadeInLeft 0.6s ease;
+        }
+
+        @keyframes fadeInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .card {
+            background: rgba(26, 31, 58, 0.8);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(0, 212, 255, 0.2);
+            border-radius: 15px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent-color), var(--accent-purple), var(--accent-pink));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            border-color: var(--accent-color);
+            box-shadow: 0 0 30px rgba(0, 212, 255, 0.2);
+        }
+
+        .card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .card-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            display: inline-block;
+        }
+
+        .card h3 {
+            color: var(--accent-color);
+            margin-bottom: 0.8rem;
+            font-size: 1.4rem;
+        }
+
+        .card p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+            line-height: 1.8;
+        }
+
+        .card ul {
+            list-style: none;
+        }
+
+        .card ul li {
+            position: relative;
+            padding-right: 1.5rem;
+            color: var(--text-primary);
+            font-size: 0.9rem;
+            margin-bottom: 0.6rem;
+        }
+
+        .card ul li::before {
+            content: "★";
+            color: var(--accent-orange);
+            font-weight: bold;
+            position: absolute;
+            right: 0;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.1) 0%, rgba(157, 78, 221, 0.1) 100%);
+            border: 1px solid rgba(0, 212, 255, 0.3);
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+            text-align: center;
+        }
+
+        .highlight-box h3 {
+            color: var(--accent-color);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .stat-card {
+            background: rgba(26, 31, 58, 0.8);
+            border: 1px solid var(--accent-color);
+            border-radius: 12px;
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--accent-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .timeline {
+            position: relative;
+            padding: 2rem 0;
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-left: 3rem;
+            margin-bottom: 2rem;
+            padding-bottom: 2rem;
+            border-left: 2px solid var(--accent-color);
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -7px;
+            top: 0;
+            width: 12px;
+            height: 12px;
+            background: var(--accent-color);
+            border-radius: 50%;
+        }
+
+        .timeline-item h4 {
+            color: var(--accent-color);
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .timeline-item p {
+            color: var(--text-secondary);
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 4rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2rem;
+            }
+
+            .section-title {
+                font-size: 1.5rem;
+            }
+
+            .grid-3 {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <h1>🚀 الفضاء والفلك 🌌</h1>
+            <p>استكشاف عجائب الكون واللامحدود</p>
+            <div>
+                <span class="badge">علم الفلك</span>
+                <span class="badge">استكشاف الفضاء</span>
+                <span class="badge">الكون والنجوم</span>
+            </div>
+        </header>
+
+        <!-- مقدمة -->
+        <div class="highlight-box">
+            <h3>🌟 رحلة عبر الكون</h3>
+            <p>الفضاء هو أعظم لغز يحيط بنا. يحتوي على مليارات النجوم والمجرات والكواكب التي تدور حول الشمس والنجوم الأخرى. اكتشف معنا عجائب هذا الكون اللامحدود!</p>
+        </div>
+
+        <!-- إحصائيات مذهلة -->
+        <h2 class="section-title">📊 أرقام مذهلة عن الكون</h2>
+        <div class="stats">
+            <div class="stat-card">
+                <div class="stat-number">200B</div>
+                <div class="stat-label">مليار مجرة معروفة</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">13.8B</div>
+                <div class="stat-label">سنة عمر الكون</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">400B</div>
+                <div class="stat-label">نجم في مجرة درب التبانة</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">299,792</div>
+                <div class="stat-label">كم/ثانية سرعة الضوء</div>
+            </div>
+        </div>
+
+        <!-- الأجرام السماوية الرئيسية -->
+        <h2 class="section-title">🪐 الأجرام السماوية الرئيسية</h2>
+        <div class="grid-3">
+            <div class="card">
+                <div class="card-icon">☀️</div>
+                <h3>الشمس</h3>
+                <p>نجم متوسط الحجم في مركز نظامنا الشمسي. تشع الطاقة والحرارة التي تعطي الحياة لكوكبنا.</p>
+                <ul>
+                    <li>القطر: 1.39 مليون كم</li>
+                    <li>العمر: 4.6 مليار سنة</li>
+                    <li>تصنيف: نجم من النوع G</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <div class="card-icon">🌍</div>
+                <h3>كوكب الأرض</h3>
+                <p>كوكبنا الأزرق الجميل، الوحيد المعروف الذي يحتوي على حياة في الكون حتى الآن.</p>
+                <ul>
+                    <li>المسافة من الشمس: 150 مليون كم</li>
+                    <li>يوم واحد = 24 ساعة</li>
+                    <li>القمر: قمر واحد طبيعي</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <div class="card-icon">🌙</div>
+                <h3>القمر</h3>
+                <p>القمر الوحيد للأرض، يؤثر على المد والجزر ويضيء سماءنا الليلية.</p>
+                <ul>
+                    <li>المسافة من الأرض: 384,400 كم</li>
+                    <li>الدورة: 27.3 يوم</li>
+                    <li>القطر: 3,474 كم</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <div class="card-icon">🔴</div>
+                <h3>كوكب المريخ</h3>
+                <p>الكوكب الأحمر، هدف استكشاف الفضاء المستقبلي والبحث عن علامات حياة سابقة.</p>
+                <ul>
+                    <li>لون أحمر بسبب أكسيد الحديد</li>
+                    <li>قطبان جليديان</li>
+                    <li>أعلى بركان في النظام الشمسي</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <div class="card-icon">🪐</div>
+                <h3>كوكب المشتري</h3>
+                <p>أكبر كواكب النظام الشمسي، عملاق غازي بألوان جميلة وعواصف هائلة.</p>
+                <ul>
+                    <li>قطر أكبر من الأرض بـ 11 مرة</li>
+                    <li>بقعة حمراء عظيمة (عاصفة)</li>
+                    <li>79 قمراً معروفاً</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <div class="card-icon">💫</div>
+                <h3>النجوم والمجرات</h3>
+                <p>الكون ممتلئ بالنجوم والمجرات الضخمة، كل واحدة تحتوي على مليارات النجوم.</p>
+                <ul>
+                    <li>مجرة درب التبانة لنا</li>
+                    <li>مجرة أندروميدا أقرب إلينا</li>
+                    <li>تجمعات نجمية ضخمة</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- مراحل استكشاف الفضاء -->
+        <h2 class="section-title">🛸 مراحل استكشاف الفضاء</h2>
+        <div class="timeline">
+            <div class="timeline-item">
+                <h4>1957 - إطلاق سبوتنيك 1</h4>
+                <p>الاتحاد السوفياتي يطلق أول قمر صناعي إلى الفضاء، بداية عصر استكشاف الفضاء.</p>
+            </div>
+
+            <div class="timeline-item">
+                <h4>1961 - رحلة يوري جاجارين</h4>
+                <p>أول رائد فضاء يصل إلى الفضاء، رحلة تاريخية غيرت نظرتنا للكون.</p>
+            </div>
+
+            <div class="timeline-item">
+                <h4>1969 - هبوط على القمر</h4>
+                <p>نيل أرمسترونج وبوز ألدرين يهبطان على القمر، حقبة ذهبية في الاستكشاف.</p>
+            </div>
+
+            <div class="timeline-item">
+                <h4>1981 - مكوك الفضاء</h4>
+                <p>تطوير المكوك الفضائي، وسيلة إعادة استخدام لنقل الرواد والبضائع للفضاء.</p>
+            </div>
+
+            <div class="timeline-item">
+                <h4>1990 - تلسكوب هابل</h4>
+                <p>تليسكوب فضائي يغير فهمنا للكون ويكشف أسرار المجرات البعيدة.</p>
+            </div>
+
+            <div class="timeline-item">
+                <h4>2020 - مستقبل الاستكشاف</h4>
+                <p>مهام إلى المريخ والقمر وتليسكوبات فضائية متقدمة لاستكشاف أعمق أسرار الكون.</p>
+            </div>
+        </div>
+
+        <!-- الظواهر الفضائية المذهلة -->
+        <h2 class="section-title">✨ ظواهر فضائية مذهلة</h2>
+        <div class="grid-3">
+            <div class="card">
+                <div class="card-icon">🌑</div>
+                <h3>الثقوب السوداء</h3>
+                <p>مناطق في الفضاء ذات جاذبية هائلة جداً بحيث لا يفلت منها شيء حتى الضوء.</p>
+            </div>
+
+            <div class="card">
+                <div class="card-icon">💥</div>
+                <h3>المستعرات الشمسية</h3>
+                <p>انفجارات عظيمة للنجوم تضيء السماء وتعادل إضاءة ملايين النجوم.</p>
+            </div>
+
+            <div class="card">
+                <div class="card-icon">🌌</div>
+                <h3>السدم</h3>
+                <p>غيوم من الغاز والغبار الكوني، مهد تشكل النجوم الجديدة والكواكب.</p>
+            </div>
+
+            <div class="card">
+                <div class="card-icon">🌠</div>
+                <h3>النيازك</h3>
+                <p>أجسام صخرية تسقط من الفضاء، تخلق لمعة جميلة عند دخولها الغلاف الجوي.</p>
+            </div>
+
+            <div class="card">
+                <div class="card-icon">🌪️</div>
+                <h3>عواصف الفضاء</h3>
+                <p>انفجارات شمسية وتوهجات عظيمة تؤثر على الأرض والأقمار الصناعية.</p>
+            </div>
+
+            <div class="card">
+                <div class="card-icon">🔮</div>
+                <h3>المادة المظلمة</h3>
+                <p>مادة غامضة تشكل معظم كتلة الكون لكننا لا نراها بعد.</p>
+            </div>
+        </div>
+
+        <!-- الرسالة الختامية -->
+        <div class="highlight-box">
+            <h3>🌌 نحن جزء من الكون اللامحدود</h3>
+            <p>الفضاء يذكرنا بصغرنا في هذا الكون الضخم، لكنه يلهمنا أيضاً لاستكشاف الآفاق الجديدة والبحث عن إجابات الأسئلة الكبرى حول وجودنا ومستقبلنا.</p>
+        </div>
+
+        <footer>
+            <p>صفحة الفضاء والفلك - استكشاف عجائب الكون © 2026</p>
+        </footer>
+    </div>
+
+</body>
+</html>
