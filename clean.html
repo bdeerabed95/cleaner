@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ملخص وثيقة مشروع: تطبيق منظف أندرويد الاحترافي (Cleaner Pro)</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #0f172a;
+            --bg-card: #1e293b;
+            --bg-card-hover: #334155;
+            --accent-color: #38bdf8;
+            --accent-green: #4ade80;
+            --accent-purple: #c084fc;
+            --accent-red: #f87171;
+            --text-primary: #f8fafc;
+            --text-secondary: #94a3b8;
+            --border-color: #334155;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Cairo', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.7;
+            padding: 2rem 1rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 3rem;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 2rem;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            color: var(--accent-color);
+            margin-bottom: 0.5rem;
+            font-weight: 800;
+        }
+
+        header p {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+        }
+
+        .architecture-badge {
+            display: inline-block;
+            background: rgba(56, 189, 248, 0.1);
+            color: var(--accent-color);
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            border: 1px solid var(--accent-color);
+            margin-top: 1rem;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+            color: var(--text-primary);
+            margin: 2.5rem 0 1.5rem 0;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            border-right: 4px solid var(--accent-color);
+            padding-right: 0.75rem;
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 1.5rem;
+            transition: transform 0.2s, background-color 0.2s;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            background-color: var(--bg-card-hover);
+        }
+
+        .card-icon {
+            font-size: 2rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .card h3 {
+            color: var(--accent-color);
+            margin-bottom: 0.5rem;
+            font-size: 1.3rem;
+        }
+
+        .card p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+        }
+
+        .card ul {
+            list-style: none;
+        }
+
+        .card ul li {
+            position: relative;
+            padding-right: 1.25rem;
+            color: var(--text-primary);
+            font-size: 0.9rem;
+            margin-bottom: 0.4rem;
+        }
+
+        .card ul li::before {
+            content: "•";
+            color: var(--accent-color);
+            font-weight: bold;
+            position: absolute;
+            right: 0;
+        }
+
+        .tree-view {
+            background-color: #090d16;
+            padding: 1.5rem;
+            border-radius: 12px;
+            font-family: monospace;
+            direction: ltr;
+            text-align: left;
+            color: #38bdf8;
+            border: 1px solid var(--border-color);
+            overflow-x: auto;
+        }
+
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            margin-top: 1rem;
+        }
+
+        .tech-pill {
+            background: #334155;
+            color: #f8fafc;
+            padding: 0.3rem 0.8rem;
+            border-radius: 6px;
+            font-size: 0.85rem;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 4rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <h1>مشروعCleaner Pro - منظف الأندرويد الشامل</h1>
+            <p>وثيقة الشفرة والملخص المعماري والتكتيكي الكامل للمشروع</p>
+            <div class="architecture-badge">معمارية MVVM + Jetpack Compose + Kotlin Coroutines</div>
+        </header>
+
+        <!-- التقنيات المستخدمة -->
+        <h2 class="section-title">الترسانة التقنية (Tech Stack)</h2>
+        <div class="tech-stack">
+            <span class="tech-pill">Kotlin</span>
+            <span class="tech-pill">Jetpack Compose</span>
+            <span class="tech-pill">Coroutines & Flow</span>
+            <span class="tech-pill">Accessibility Service</span>
+            <span class="tech-pill">Room Database</span>
+            <span class="tech-pill">WorkManager</span>
+            <span class="tech-pill">StorageStatsManager</span>
+            <span class="tech-pill">Lottie Animations</span>
+        </div>
+
+        <!-- المحركات السبعة -->
+        <h2 class="section-title">المحركات السبعة الأساسية (7 Core Engines)</h2>
+        <div class="grid-3">
+            <div class="card">
+                <div class="card-icon">📊</div>
+                <h3>1. محرك محلل التخزين</h3>
+                <p>StorageAnalyzerEngine</p>
+                <ul>
+                    <li>حساب أحجام المجلدات ذاتياً (Recursive Scan).</li>
+                    <li>كشف وتصنيف الملفات الضخمة (>50MB).</li>
+                    <li>عرض الهيكل البياني للمساحة المستهلكة.</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <div class="card-icon">👯‍♂️</div>
+                <h3>2. محرك إزالة النسخ المتكررة</h3>
+                <p>DuplicateFinderEngine</p>
+                <ul>
+                    <li>تجميع الملفات حسَب الحجم لتسريع العملية.</li>
+                    <li>مطابقة المحتوى بدقة عبر خوارزمية MD5 Hash.</li>
+                    <li>تحديد الملفات المكررة للحد من هدر المساحة.</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <div class="card-icon">📱</div>
+                <h3>3. محرك إدارة وتنظيف التطبيقات</h3>
+                <p>AppManagerEngine</p>
+                <ul>
+                    <li>قراءة أحجام الـ Cache و APK بـ StorageStatsManager.</li>
+                    <li>فرز التطبيقات حسب استهلاك المساحة.</li>
+                    <li>توفير خيارات الحذف ومسح البيانات.</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <div class="card-icon">🤖</div>
+                <h3>4. الخادمة العميقة (الأتمتة)</h3>
+                <p>DeepMaidAccessibilityService</p>
+                <ul>
+                    <li>محاكاة نقرات المستخدم بالنظام الآلي.</li>
+                    <li>تجاوز قيود الأندرويد لمسح الكاش دفعة واحدة.</li>
+                    <li>دعم متعدد اللغات وواجهات متعددة (Xiaomi, Samsung...).</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <div class="card-icon">🧹</div>
+                <h3>5. محرك تنظيف النظام</h3>
+                <p>SystemCleanerEngine</p>
+                <ul>
+                    <li>استهداف ملفات السجل (.log) والملفات المؤقتة (.tmp).</li>
+                    <li>مسح ذاكرة الصور المصغرة الضخمة (.thumbnails).</li>
+                    <li>حذف المجلدات الفارغة التي تستهلك الفهرس.</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <div class="card-icon">🗑️</div>
+                <h3>6. محرك الملفات المتبقية</h3>
+                <p>ResidualFilesEngine</p>
+                <ul>
+                    <li>مطابقة مجلدات Android/data مع التطبيقات المثبتة.</li>
+                    <li>كشف واستخراج بقايا التطبيقات المحذوفة سابقاً.</li>
+                    <li>استعادة المساحة المفقودة بأمان.</li>
+                </ul>
+            </div>
+
+            <div class="card" style="grid-column: span 1;">
+                <div class="card-icon">🛠️</div>
+                <h3>7. محرك الإصلاح الشامل</h3>
+                <p>SystemRepairEngine</p>
+                <ul>
+                    <li>تطهير الحافظة (Clipboard) لحماية الخصوصية.</li>
+                    <li>إغلاق العمليات المعلقة في الـ RAM.</li>
+                    <li>فحص مستشعرات حرارة واستقرار النظام.</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- الأتمتة والخلفية -->
+        <h2 class="section-title">البنية التحتية والخدمات الذكية</h2>
+        <div class="grid-3">
+            <div class="card">
+                <div class="card-icon">💾</div>
+                <h3>قاعدة البيانات (Room DB)</h3>
+                <p>تخزين سجلات عمليات التنظيف والمساحة المحررة تاريخياً لتقديم تقارير توفير المساحة للمستخدم.</p>
+            </div>
+            <div class="card">
+                <div class="card-icon">⏰</div>
+                <h3>المجدول الخلفي (WorkManager)</h3>
+                <p>جدولة عملية "الخادمة الذكية" كل 24 ساعة أثناء شحن الجهاز للتنظيف التلقائي دون إزعاج.</p>
+            </div>
+            <div class="card">
+                <div class="card-icon">🔔</div>
+                <h3>الإشعارات الرسومية (UI & UX)</h3>
+                <p>رسوم متحركة جذابة عبر Lottie والإشعارات الذكية للتنبيه بعد كل عملية تنظيف تلقائية ناجحة.</p>
+            </div>
+        </div>
+
+        <!-- هيكل الملفات -->
+        <h2 class="section-title">الهيكل التنظيمي للمشروع (Project Structure)</h2>
+        <div class="tree-view">
+com.cleaner.pro/
+├── engines/
+│   ├── SystemCleanerEngine.kt
+│   ├── AppManagerEngine.kt
+│   ├── DuplicateFinderEngine.kt
+│   ├── ResidualFilesEngine.kt
+│   ├── StorageAnalyzerEngine.kt
+│   └── SystemRepairEngine.kt
+├── services/
+│   ├── DeepMaidAccessibilityService.kt
+│   └── SmartMaidService.kt
+├── db/
+│   ├── AppDatabase.kt
+│   ├── CleaningDao.kt
+│   └── CleaningRecord.kt
+├── workers/
+│   └── CleaningWorker.kt
+├── ui/
+│   ├── DashboardScreen.kt
+│   └── MainViewModel.kt
+└── utils/
+    └── NotificationHelper.kt
+        </div>
+
+        <footer>
+            <p>مشروع تطبيق Cleaner Pro - إعداد وتوثيق المعمارية البرمجية الشاملة لأندرويد © 2026</p>
+        </footer>
+    </div>
+
+</body>
+</html>
